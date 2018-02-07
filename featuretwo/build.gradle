@@ -1,0 +1,62 @@
+apply plugin: 'com.android.feature'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+
+        versionCode VERSION_CODE as int
+        versionName VERSION_NAME
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    flavorDimensions "default"
+
+    buildTypes {
+        debug
+        release
+    }
+
+    productFlavors {
+        dev
+        product
+    }
+}
+
+dependencies {
+    implementation project(':base')
+
+    // kotlin
+    implementation rootProject.ext.kotlin
+
+    // support
+    implementation rootProject.ext.recyclerView
+
+    // dagger
+    implementation rootProject.ext.dagger
+    implementation rootProject.ext.daggerAndroid
+    implementation rootProject.ext.daggerAndroidSupport
+    kapt rootProject.ext.daggerCompiler
+    kapt rootProject.ext.daggerAndroidProcessor
+
+    // reactive
+    implementation rootProject.ext.rx
+    implementation rootProject.ext.rxAndroid
+    implementation rootProject.ext.rxKotlin
+    implementation rootProject.ext.rxLifecycle
+    implementation rootProject.ext.rxLifecycleAndroid
+    implementation rootProject.ext.rxLifecycleAndroidComponents
+    implementation rootProject.ext.rxLifecycleKotlin
+
+    // debug
+    implementation rootProject.ext.timber
+
+    // ui
+    implementation rootProject.ext.glide
+}

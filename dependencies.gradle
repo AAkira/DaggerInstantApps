@@ -1,0 +1,93 @@
+ext {
+    compileSdkVersion = 26
+    buildToolsVersion = "26.0.2"
+    minSdkVersion = 14
+    instantAppMinSdkVersion = 23
+    targetSdkVersion = 26
+
+    // Kotlin
+    kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion"
+
+    // Libraries
+
+    // multidex
+    multidex = "com.android.support:multidex:1.0.1"
+
+    // instant apps
+    instantApps = 'com.google.android.instantapps:instantapps:1.1.0'
+
+    // support library
+    appCompatVersion = "27.0.2"
+
+    // v4
+    supportCompat = "com.android.support:support-compat:$appCompatVersion"
+    supportCoreUi = "com.android.support:support-core-ui$appCompatVersion"
+
+    // v7
+    appCompat = "com.android.support:appcompat-v7:$appCompatVersion"
+    recyclerView = "com.android.support:recyclerview-v7:$appCompatVersion"
+
+    // play service
+    playServiceVersion = "11.6.0"
+
+    playServiceBase = "com.google.android.gms:play-services-base:$playServiceVersion"
+    playServiceAuth = "com.google.android.gms:play-services-auth:$playServiceVersion"
+    playServiceAds = "com.google.android.gms:play-services-ads:$playServiceVersion"
+    playServiceGcm = "com.google.android.gms:play-services-gcm:$playServiceVersion"
+    playServiceAnalytics = "com.google.android.gms:play-services-analytics:$playServiceVersion"
+
+    // google cast
+    castFramework = "com.google.android.gms:play-services-cast-framework:$playServiceVersion"
+    supportMediaRouter = "com.android.support:mediarouter-v7:$appCompatVersion"
+
+    // dagger
+    daggerVersion = "2.14.1"
+
+    dagger = "com.google.dagger:dagger:$daggerVersion"
+    daggerAndroid = "com.google.dagger:dagger-android:$daggerVersion"
+    daggerAndroidSupport = "com.google.dagger:dagger-android-support:$daggerVersion"
+    daggerCompiler = "com.google.dagger:dagger-compiler:$daggerVersion" // apt
+    daggerAndroidProcessor = "com.google.dagger:dagger-android-processor:$daggerVersion" // apt
+
+    // data
+    moshiVersion = "1.5.0"
+    okVersion = "3.9.1"
+    retrofitVersion = "2.3.0"
+
+    moshi = "com.squareup.moshi:moshi:$moshiVersion"
+    moshiKotlin = "com.squareup.moshi:moshi-kotlin:$moshiVersion"
+    okHttp3 = "com.squareup.okhttp3:okhttp:$okVersion"
+    okHttp3Interceptor = "com.squareup.okhttp3:logging-interceptor:$okVersion"
+    retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    retrofitRx = "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    retrofitMoshi = "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+
+    // reactive
+    rxLifecycleVersion = "2.2.1"
+    rxBindingVersion = "2.0.0"
+
+    rx = 'io.reactivex.rxjava2:rxjava:2.1.6'
+    rxAndroid = 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    rxKotlin = 'io.reactivex.rxjava2:rxkotlin:2.1.0'
+    rxLifecycle = "com.trello.rxlifecycle2:rxlifecycle:$rxLifecycleVersion"
+    rxLifecycleAndroid = "com.trello.rxlifecycle2:rxlifecycle-android:$rxLifecycleVersion"
+    rxLifecycleAndroidComponents = "com.trello.rxlifecycle2:rxlifecycle-components:$rxLifecycleVersion"
+    rxLifecycleKotlin = "com.trello.rxlifecycle2:rxlifecycle-kotlin:$rxLifecycleVersion"
+    rxBindingKotlin = "com.jakewharton.rxbinding2:rxbinding-kotlin:$rxBindingVersion"
+    rxBindingSupport = "com.jakewharton.rxbinding2:rxbinding-support-v4-kotlin:$rxBindingVersion"
+    rxBindingAppCompat = "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:$rxBindingVersion"
+    rxBindingRecyclerView = "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:$rxBindingVersion"
+    rxPreferences = 'com.f2prateek.rx.preferences2:rx-preferences:2.0.0-RC3'
+    sqlBrite = 'com.squareup.sqlbrite2:sqlbrite:2.0.0'
+
+    // debug
+    stethoVersion = "1.5.0"
+
+    timber = 'com.jakewharton.timber:timber:4.6.0'
+    stetho = "com.facebook.stetho:stetho:$stethoVersion"
+    stethoOkHttp = "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
+
+    // ui
+    glide = 'com.github.bumptech.glide:glide:4.3.1'
+    constraintLayout = 'com.android.support.constraint:constraint-layout:1.0.2'
+}

@@ -1,0 +1,60 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+
+        versionCode VERSION_CODE as int
+        versionName VERSION_NAME
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    flavorDimensions "default"
+
+    signingConfigs {
+        dev {
+            storeFile file(devKeystore)
+            keyAlias devKeyalias
+            storePassword devKeystorePassword
+            keyPassword devKeyaliasPassword
+        }
+
+        product {
+            storeFile file(productKeystore)
+            keyAlias productKeyalias
+            storePassword productKeystorePassword
+            keyPassword productKeyaliasPassword
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+        dev {
+            applicationIdSuffix ".dev"
+            signingConfig signingConfigs.dev
+        }
+        product {
+            signingConfig signingConfigs.product
+        }
+    }
+}
+
+dependencies {
+    implementation project(':base')
+    implementation project(':featureone')
+    implementation project(':featuretwo')
+}

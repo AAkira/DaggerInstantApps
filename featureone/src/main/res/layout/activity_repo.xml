@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/desert_storm"
+    >
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_x_large"
+        android:textAppearance="@style/TextAppearance.XLargeTitle"
+        />
+
+    <TextView
+        android:id="@+id/starText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_x_large"
+        android:layout_marginTop="@dimen/margin_x_large"
+        android:layout_toRightOf="@id/titleText"
+        android:drawableLeft="@drawable/ic_star"
+        android:drawablePadding="@dimen/margin_x_small"
+        android:drawableTint="@color/text_primary_black"
+        android:text="Star"
+        android:textAppearance="@style/TextAppearance.XLargeTitle"
+        />
+
+    <TextView
+        android:id="@+id/descriptionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/titleText"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_x_large"
+        android:textAppearance="@style/TextAppearance.Description"
+        />
+
+    <TextView
+        android:id="@+id/issueButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/descriptionText"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_x_large"
+        android:background="@color/smart_blue"
+        android:drawableLeft="@drawable/ic_issue_opened"
+        android:drawablePadding="@dimen/margin_small"
+        android:drawableTint="@color/primary_white"
+        android:paddingBottom="@dimen/margin_small"
+        android:paddingLeft="@dimen/margin_large"
+        android:paddingRight="@dimen/margin_large"
+        android:paddingTop="@dimen/margin_small"
+        android:text="Issue"
+        android:textAppearance="@style/TextAppearance.Description"
+        android:textColor="@color/text_primary_white"
+        />
+
+    <TextView
+        android:id="@+id/prButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/issueButton"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_toRightOf="@id/issueButton"
+        android:background="@color/smart_blue"
+        android:drawableLeft="@drawable/ic_git_pull_request"
+        android:drawablePadding="@dimen/margin_small"
+        android:drawableTint="@color/primary_white"
+        android:paddingBottom="@dimen/margin_small"
+        android:paddingLeft="@dimen/margin_large"
+        android:paddingRight="@dimen/margin_large"
+        android:paddingTop="@dimen/margin_small"
+        android:text="Pull Request"
+        android:textAppearance="@style/TextAppearance.Description"
+        android:textColor="@color/text_primary_white"
+        />
+
+    <WebView
+        android:id="@+id/readmeView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/issueButton"
+        android:layout_marginTop="@dimen/margin_x_large"
+        />
+</RelativeLayout>

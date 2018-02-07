@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="com.github.aakira.featuretwo"
+          xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <application>
+        <activity android:name=".ui.repolist.RepositoryListActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.issue.IssueListActivity"
+            android:label="Issue"
+            >
+            <intent-filter android:priority="10">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="@string/base_host"
+                    android:pathPattern="/.*/.*/issues"
+                    android:scheme="https"
+                    />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pullrequest.PullRequestListActivity"
+            android:label="PullRequest"
+            >
+            <intent-filter android:priority="10">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="@string/base_host"
+                    android:pathPattern="/.*/.*/pulls"
+                    android:scheme="https"
+                    />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

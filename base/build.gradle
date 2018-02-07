@@ -1,0 +1,76 @@
+apply plugin: 'com.android.feature'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    baseFeature true
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+
+        versionCode VERSION_CODE as int
+        versionName VERSION_NAME
+    }
+
+    flavorDimensions "default"
+
+    buildTypes {
+        debug {
+            buildConfigField "String", "GITHUB_TOKEN", "\"${project.property("gitHubToken")}\""
+        }
+        release {
+            buildConfigField "String", "GITHUB_TOKEN", "\"${project.property("gitHubToken")}\""
+        }
+    }
+
+    productFlavors {
+        dev
+        product
+    }
+}
+
+dependencies {
+    application project(':app')
+    feature project(':featureone')
+    feature project(":featuretwo")
+
+    api rootProject.ext.appCompat
+    api rootProject.ext.constraintLayout
+
+    // kotlin
+    implementation rootProject.ext.kotlin
+
+    // dagger
+    implementation rootProject.ext.dagger
+    implementation rootProject.ext.daggerAndroid
+    implementation rootProject.ext.daggerAndroidSupport
+    kapt rootProject.ext.daggerCompiler
+    kapt rootProject.ext.daggerAndroidProcessor
+
+    // data
+    implementation rootProject.ext.moshi
+    implementation rootProject.ext.moshiKotlin
+    implementation rootProject.ext.okHttp3
+    implementation rootProject.ext.okHttp3Interceptor
+    implementation rootProject.ext.retrofit
+    implementation rootProject.ext.retrofitRx
+    implementation rootProject.ext.retrofitMoshi
+
+    // reactive
+    implementation rootProject.ext.rx
+    implementation rootProject.ext.rxAndroid
+    implementation rootProject.ext.rxKotlin
+    implementation rootProject.ext.rxLifecycle
+    implementation rootProject.ext.rxLifecycleAndroid
+    implementation rootProject.ext.rxLifecycleAndroidComponents
+    implementation rootProject.ext.rxLifecycleKotlin
+
+    // debug
+    implementation rootProject.ext.timber
+    debugImplementation rootProject.ext.stetho
+    debugImplementation rootProject.ext.stethoOkHttp
+}

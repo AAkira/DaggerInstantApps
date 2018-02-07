@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary">#3F51B5</color>
+    <color name="color_primary_dark">#303F9F</color>
+    <color name="color_accent">#FF4081</color>
+
+
+    <color name="primary_white">#fff</color>
+    <color name="primary_black">#111</color>
+
+    <!-- background -->
+    <color name="smart_blue">#4F7F93</color>
+    <color name="desert_storm">#E7E2DD</color>
+
+    <!-- text -->
+    <color name="text_primary_white">#fff</color>
+    <color name="text_primary_black">#323232</color>
+
+    <!-- ripple -->
+    <color name="selectable_pressed">#1e000000</color>
+    <color name="selectable_ripple">#27000000</color>
+</resources>
