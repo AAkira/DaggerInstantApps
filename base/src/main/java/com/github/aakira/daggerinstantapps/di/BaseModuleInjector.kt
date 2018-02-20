@@ -29,10 +29,10 @@ abstract class BaseModuleInjector : HasActivityInjector,
         HasContentProviderInjector {
 
     @Inject lateinit var activityInjector: DispatchingAndroidInjector<Activity>
-    @Inject lateinit var fragmentSupportInject: DispatchingAndroidInjector<SupportFragment>
-    @Inject lateinit var serviceInjector: DispatchingAndroidInjector<Service>
     @Inject lateinit var broadcastReceiverInjector: DispatchingAndroidInjector<BroadcastReceiver>
     @Inject lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
+    @Inject lateinit var fragmentSupportInject: DispatchingAndroidInjector<SupportFragment>
+    @Inject lateinit var serviceInjector: DispatchingAndroidInjector<Service>
     @Inject lateinit var contentProviderInjector: DispatchingAndroidInjector<ContentProvider>
 
     private var needToInject = true
@@ -49,6 +49,14 @@ abstract class BaseModuleInjector : HasActivityInjector,
             is Fragment -> fragmentInjector.inject(dependerContext)
             is ContentProvider -> contentProviderInjector.inject(dependerContext)
         }
+    }
+
+    /**
+     * Initialize component again
+     */
+    fun forceInject(dependerContext: Context) {
+        needToInject = true
+        inject(dependerContext)
     }
 
     private fun injectIfNecessary(appComponent: AppComponent) {
@@ -81,5 +89,5 @@ abstract class BaseModuleInjector : HasActivityInjector,
 
     override fun contentProviderInjector(): DispatchingAndroidInjector<ContentProvider> = contentProviderInjector
 
-    override fun supportFragmentInjector(): DispatchingAndroidInjector<android.support.v4.app.Fragment> = fragmentSupportInject
+    override fun supportFragmentInjector(): DispatchingAndroidInjector<SupportFragment> = fragmentSupportInject
 }
