@@ -1,6 +1,7 @@
 package com.github.aakira.daggerinstantapps.featureone.di
 
 import com.github.aakira.daggerinstantapps.di.AppComponent
+import com.github.aakira.daggerinstantapps.di.DaggerComponent
 import com.github.aakira.daggerinstantapps.di.PerModuleScope
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -15,6 +16,6 @@ import dagger.android.support.AndroidSupportInjectionModule
             FeatureOneModule::class
         ]
 )
-interface FeatureOneComponent : AndroidInjector<FeatureOneModuleInjector> {
+interface FeatureOneComponent : AndroidInjector<FeatureOneModuleInjector>, DaggerComponent {
 
 }

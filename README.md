@@ -124,7 +124,7 @@ interface AppComponent : AndroidInjector<App>, AppComponentProviders {
             FeatureOneModule::class
         ]
 )
-interface FeatureOneComponent : AndroidInjector<FeatureOneModuleInjector>
+interface FeatureOneComponent : AndroidInjector<FeatureOneModuleInjector>, DaggerComponent
 ```
 
 * Feature/ModuleInjector
@@ -132,9 +132,9 @@ interface FeatureOneComponent : AndroidInjector<FeatureOneModuleInjector>
 ```kotlin
 object FeatureOneModuleInjector : BaseModuleInjector() {
 
-    override fun moduleInjector(appComponent: AppComponent): AndroidInjector<out BaseModuleInjector> {
+    override fun moduleInjector(daggerComponent: DaggerComponent): AndroidInjector<out BaseModuleInjector> {
         return DaggerFeatureOneComponent.builder()
-                .appComponent(appComponent)
+                .appComponent(daggerComponent as AppComponent)
                 .build()
     }
 }

@@ -37,10 +37,28 @@ abstract class BaseModuleInjector : HasActivityInjector,
 
     private var needToInject = true
 
-    abstract fun moduleInjector(appComponent: AppComponent): AndroidInjector<out BaseModuleInjector>
+    abstract fun moduleInjector(daggerComponent: DaggerComponent): AndroidInjector<out BaseModuleInjector>
 
+    /**
+     * Inject an app component
+     */
     fun inject(dependerContext: Context) {
         injectIfNecessary(App.appComponent(dependerContext))
+        when (dependerContext) {
+            is Activity -> activityInjector.inject(dependerContext)
+            is SupportFragment -> fragmentSupportInject.inject(dependerContext)
+            is Service -> serviceInjector.inject(dependerContext)
+            is BroadcastReceiver -> broadcastReceiverInjector.inject(dependerContext)
+            is Fragment -> fragmentInjector.inject(dependerContext)
+            is ContentProvider -> contentProviderInjector.inject(dependerContext)
+        }
+    }
+
+    /**
+     * Inject a sub component
+     */
+    fun inject(daggerComponent: DaggerComponent, dependerContext: Context) {
+        injectIfNecessary(daggerComponent)
         when (dependerContext) {
             is Activity -> activityInjector.inject(dependerContext)
             is SupportFragment -> fragmentSupportInject.inject(dependerContext)
@@ -59,11 +77,19 @@ abstract class BaseModuleInjector : HasActivityInjector,
         inject(dependerContext)
     }
 
-    private fun injectIfNecessary(appComponent: AppComponent) {
+    /**
+     * Initialize component again
+     */
+    fun forceInject(daggerComponent: DaggerComponent, dependerContext: Context) {
+        needToInject = true
+        inject(daggerComponent, dependerContext)
+    }
+
+    private fun injectIfNecessary(daggerComponent: DaggerComponent) {
         if (needToInject) {
             synchronized(this) {
                 if (needToInject) {
-                    val moduleInjector = moduleInjector(appComponent) as AndroidInjector<BaseModuleInjector>
+                    val moduleInjector = moduleInjector(daggerComponent) as AndroidInjector<BaseModuleInjector>
                     moduleInjector.inject(this)
                     if (needToInject) {
                         throw IllegalStateException(
