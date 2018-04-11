@@ -14,7 +14,7 @@ import javax.inject.Singleton
     AndroidSupportInjectionModule::class,
     AppModule::class
 ])
-interface AppComponent : AndroidInjector<App>, AppComponentProviders {
+interface AppComponent : AndroidInjector<App>, DaggerComponent, AppComponentProviders {
 
     override fun inject(instance: App)
 
