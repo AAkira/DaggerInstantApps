@@ -39,6 +39,9 @@ abstract class BaseModuleInjector : HasActivityInjector,
 
     abstract fun moduleInjector(daggerComponent: DaggerComponent): AndroidInjector<out BaseModuleInjector>
 
+    /**
+     * Inject an app component
+     */
     fun inject(dependerContext: Context) {
         injectIfNecessary(App.appComponent(dependerContext))
         when (dependerContext) {
@@ -51,6 +54,9 @@ abstract class BaseModuleInjector : HasActivityInjector,
         }
     }
 
+    /**
+     * Inject a sub component
+     */
     fun inject(daggerComponent: DaggerComponent, dependerContext: Context) {
         injectIfNecessary(daggerComponent)
         when (dependerContext) {
