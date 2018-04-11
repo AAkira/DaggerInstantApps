@@ -130,12 +130,13 @@ interface FeatureOneComponent : AndroidInjector<FeatureOneModuleInjector>
 * Feature/ModuleInjector
 
 ```kotlin
-@Module
-abstract class FeatureOneUiBuilder {
+object FeatureOneModuleInjector : BaseModuleInjector() {
 
-    @PerUiScope
-    @ContributesAndroidInjector(modules = [RepoModule::class])
-    internal abstract fun bindRepoActivity(): RepoActivity
+    override fun moduleInjector(appComponent: AppComponent): AndroidInjector<out BaseModuleInjector> {
+        return DaggerFeatureOneComponent.builder()
+                .appComponent(appComponent)
+                .build()
+    }
 }
 ```
 
