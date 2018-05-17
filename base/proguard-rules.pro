@@ -24,4 +24,3 @@
 
 ## dagger
 -dontwarn dagger.android.**
-

@@ -18,18 +18,40 @@ android {
 
     flavorDimensions "default"
 
+    signingConfigs {
+        dev {
+            storeFile file(devKeystore)
+            keyAlias devKeyalias
+            storePassword devKeystorePassword
+            keyPassword devKeyaliasPassword
+        }
+
+        product {
+            storeFile file(productKeystore)
+            keyAlias productKeyalias
+            storePassword productKeystorePassword
+            keyPassword productKeyaliasPassword
+        }
+    }
+
     buildTypes {
         debug {
             buildConfigField "String", "GITHUB_TOKEN", "\"${project.property("gitHubToken")}\""
         }
         release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", "GITHUB_TOKEN", "\"${project.property("gitHubToken")}\""
         }
     }
 
     productFlavors {
-        dev
-        product
+        dev {
+            signingConfig signingConfigs.dev
+        }
+        product {
+            signingConfig signingConfigs.product
+        }
     }
 }
 
