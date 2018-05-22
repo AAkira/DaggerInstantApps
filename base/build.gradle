@@ -53,6 +53,21 @@ android {
             signingConfig signingConfigs.product
         }
     }
+
+    generatePureSplits true
+
+    splits {
+        language {
+            enable true
+            include "en", "ja"
+        }
+        density {
+            enable true
+        }
+        abi {
+            enable true
+        }
+    }
 }
 
 dependencies {
